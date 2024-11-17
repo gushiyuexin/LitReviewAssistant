@@ -225,6 +225,7 @@ def Json_Info_Read(Json_file_address, PaperInfo, file_dir, TitleList, ceilnum=-1
             else:
                 f1.write(paper.InfoPrint(2024, cnt, TitleList, cnt))
             cnt += 1
+            print(cnt)
             if ceilnum != -1 and cnt+1 > ceilnum:
                 break
     f1.close()

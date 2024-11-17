@@ -31,7 +31,7 @@ if UI is True:
     file_type_var = tk.StringVar(value="xls")
     Non_IF_var = tk.BooleanVar(value=True)
     Non_DOI_var = tk.BooleanVar(value=False)
-    Non_Review_var = tk.BooleanVar(value=False)
+    Review_var = tk.BooleanVar(value=False)
     file_total_num = 1
     file_name = "3DPHydrogel4Drug-Review"
     extract_step_num_var = tk.IntVar(value=5)  # 将 step_num 作为 IntVar 变量来绑定下拉菜单
@@ -66,10 +66,10 @@ if UI is True:
         ImpactLimit = int(impact_entry.get())
         MaxPaperNum = int(PaperNum_entry.get())
 
-        if Non_Review_var is True:
-            TitleList, KeyWordList = PP.TitleListRead(Article_title_list_file)
-        else:
+        if Review_var is True:
             TitleList, KeyWordList = PP.TitleListRead(Review_title_list_file)
+        else:
+            TitleList, KeyWordList = PP.TitleListRead(Article_title_list_file)
 
         messagebox.showinfo("Info", "Parameters updated successfully.")
 
@@ -91,7 +91,7 @@ if UI is True:
     def convert_txt_format():
         if PaperInfo:
             output_txt = f"{file_dir}/LLM_template.txt"
-            if Non_Review_var.get() is True:
+            if Review_var.get() is True:
                 prompt_file = f"{file_dir}/Prompt4Review.txt"
             else:
                 prompt_file = f"{file_dir}/Prompt4Article.txt"
@@ -124,6 +124,7 @@ if UI is True:
 
     # Step 5: 根据生成的 CSV，对关键词进行分类
     def classify_keywords():
+        #这儿需要提供一个选项
         tar_result = f"{file_dir}/tar_result.csv"
         prompt4classify = f"{file_dir}/Prompt4Classify.txt"
         try:
@@ -177,7 +178,7 @@ if UI is True:
     PaperNum_entry.grid(row=7, column=3)
 
     tk.Label(root, text="是否为综述整理:").grid(row=8, column=0, sticky="w")
-    tk.Checkbutton(root, variable=Non_Review_var).grid(row=8, column=1)
+    tk.Checkbutton(root, variable=Review_var).grid(row=8, column=1)
 
     tk.Label(root, text="是否跳过无期刊影响因子文献:").grid(row=8, column=2, sticky="w")
     tk.Checkbutton(root, variable=Non_IF_var).grid(row=8, column=3)
