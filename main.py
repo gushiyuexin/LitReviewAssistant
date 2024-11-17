@@ -33,10 +33,10 @@ if UI is True:
     Non_DOI_var = tk.BooleanVar(value=False)
     Review_var = tk.BooleanVar(value=False)
     file_total_num = 1
-    file_name = "3DPHydrogel4Drug-Review"
+    file_name = ""
     extract_step_num_var = tk.IntVar(value=5)  # 将 step_num 作为 IntVar 变量来绑定下拉菜单
     classify_step_num_var = tk.IntVar(value=50)
-    file_dir = "D:\工作\成果\论文\进行中\科研-Review-3DP Hydrogel For Drug\新建文件夹"
+    file_dir = ""
     PaperInfo = None
     TitleList = []
     KeyWordList = []
