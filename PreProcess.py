@@ -283,6 +283,7 @@ def TitlePrint(TitleList):
     PrintStr += "年份,"
     PrintStr += "影响力,"
     PrintStr += "DOI,"
+    PrintStr += "摘要,"
     PrintStr += "\n"
     return PrintStr
 

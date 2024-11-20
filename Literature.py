@@ -23,6 +23,7 @@ class Literature:
         PrintStr += str(self.publication_year) + ","
         PrintStr += str(self.PaperImpactCal(current_year)) + ","
         PrintStr += str(self.DOI) + ","
+        PrintStr += str(self.abstract.replace(",", "，")) + ","
         return PrintStr + "\n"
 
     def LLM_extract_Info_Display(self, InfoName):
